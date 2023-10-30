@@ -11,22 +11,14 @@ from selenium.common.exceptions import TimeoutException
 
 chrome_options = Options()
 chrome_options.add_argument("--headless")
-###For Heroku
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--disable-dev-shm-usage")
-chrome_options.add_argument("--no-sandbox")
-chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-######For Heroku
+
 ##################################################################################################
                             #MOBALYTICS PART OF THE CODE TO GET TRAITS PLAYED
 ##################################################################################################
 # Get our desired URL
 # Define the variable
 def run_main(username, region):
-    ##For Heroku
-    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-    #For Heroku
-    # driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(options=chrome_options)
     # Use the variable in the URL
     url = f'https://mobalytics.gg/tft/profile/{region}/{username}/overview'
     driver.get(url)
